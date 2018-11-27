@@ -30,7 +30,7 @@ public class Main extends Application {
 //			root.setPadding(new Insets(10));
 //			primaryStage.setScene(new Scene(root,400,400));
 
-			Parent root = (Parent)FXMLLoader.load(getClass().getResource("Paneles.fxml"));
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("Sample.fxml"));
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

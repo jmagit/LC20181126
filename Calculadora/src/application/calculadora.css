@@ -1,0 +1,58 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.root {
+	letra-pantalla: yellow;
+	-fx-background-image: url(fondo.jpeg);
+	-fx-background-size: stretch;
+}
+
+.calculadora {
+	-fx-padding: 10px;
+	-fx-spacing: 5px;
+}
+
+.pantalla {
+	-fx-text-fill: letra-pantalla;
+	-fx-background-color: darkgreen;
+	-fx-font-size: 32px;
+	-fx-alignment: center-right;
+	-fx-label-padding: 3px;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
+	-fx-effect: innershadow(one-pass-box , black , 8 , 0.2 , 2 , 2);
+	-fx-max-width: 99999999;	
+	-fx-padding: 1 1 1 5;
+}
+.resumen {
+	-fx-text-fill: darkblue;
+	-fx-font-size: 22px;
+	-fx-alignment: center-right;
+	-fx-label-padding: 3px;
+	-fx-max-width: 99999999;	
+	-fx-padding: 1 1 1 5;
+}
+
+.panel-botones {
+	-fx-hgap: 3px;
+	-fx-vgap: 3px;
+}
+
+.button {
+	-fx-min-width: 40px;	
+	-fx-min-height: 40px;
+	-fx-background-radius: 90;
+	-fx-font-size: 22px;
+	-fx-font-weight: bold;
+	-fx-alignment: center;
+}
+
+.btnDigito {
+	-fx-text-fill: navy;
+}
+.btnDigito:hover {
+	-fx-background-color: radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 100.0%, rgb(255,255,255) 0.0, rgb(204,255,255) 100.0 )
+}
+
+.btnOperacion {
+	-fx-text-fill: red;
+}

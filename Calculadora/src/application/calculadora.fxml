@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minHeight="320.0" minWidth="230.0" prefHeight="450.0" prefWidth="375.0" styleClass="calculadora" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CalculadoraController">
+	<top>
+      <VBox>
+         <children>
+      		<Label fx:id="txtResumen" styleClass="resumen" />
+            <Label fx:id="txtPantalla" styleClass="pantalla" />
+         </children>
+      </VBox>
+	</top>
+	<center>
+		<GridPane alignment="CENTER" styleClass="panel-botones" BorderPane.alignment="CENTER">
+			<columnConstraints>
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="40.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="40.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="40.0" />
+				<ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="40.0" />
+			</columnConstraints>
+			<rowConstraints>
+				<RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
+				<RowConstraints minHeight="40.0" prefHeight="50.0" vgrow="SOMETIMES" />
+			</rowConstraints>
+			<children>
+				<Button alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnIni" styleClass="btnOperacion" text="CE" GridPane.columnSpan="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBorra" styleClass="btnOperacion" text="«" GridPane.columnIndex="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OperacionPulsada" styleClass="btnOperacion" text="/" GridPane.columnIndex="3" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="7" GridPane.rowIndex="1" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="9" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OperacionPulsada" styleClass="btnOperacion" text="*" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="4" GridPane.rowIndex="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OperacionPulsada" styleClass="btnOperacion" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="1" GridPane.rowIndex="3" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OperacionPulsada" styleClass="btnOperacion" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSigno" styleClass="btnDigito" text="±" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#DigitoPulsado" styleClass="btnDigito" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<Button fx:id="btnDecimal" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnDecimal" styleClass="btnDigito" text="?" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+				<Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#OperacionPulsada" styleClass="btnOperacion" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+			</children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+		</GridPane>
+	</center>
+</BorderPane>

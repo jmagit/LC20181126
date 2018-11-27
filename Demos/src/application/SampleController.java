@@ -50,6 +50,7 @@ public class SampleController implements Initializable {
 		btn.addEventHandler(ActionEvent.ACTION, saluda);
 		btn.setText("Saluda");
 		txt.textProperty().bindBidirectional(persona.nombreProperty());
+		// saluda = (e) -> { rslt.setText("UPSSSSSSS!!!"); };
 		nombre.textProperty().bind(persona.nombreProperty());
 	}
 }
