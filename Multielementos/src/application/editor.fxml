@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditorController">
+	<top>
+		<MenuBar BorderPane.alignment="CENTER">
+			<menus>
+				<Menu mnemonicParsing="false" text="File">
+					<items>
+						<MenuItem mnemonicParsing="false" onAction="#onNuevo" text="New">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/NewFile.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></MenuItem>
+						<MenuItem mnemonicParsing="false" onAction="#onAbrir" text="Open ..."> <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Open.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></MenuItem>
+						<MenuItem mnemonicParsing="false" onAction="#onGuardar" text="Save"> <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/Save.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></MenuItem>
+						<MenuItem mnemonicParsing="false" onAction="#onGuardarComo" text="Save as ..." />
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem mnemonicParsing="false" onAction="#onSalir" text="Close" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Edit">
+					<items>
+						<MenuItem fx:id="mnuVer" mnemonicParsing="false" text="Ver" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Help">
+					<items>
+						<MenuItem mnemonicParsing="false" text="About" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+	</top>
+	<center>
+		<SplitPane dividerPositions="0.7617370892018779" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+			<items>
+				<HTMLEditor fx:id="editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" minHeight="200.0" minWidth="200.0" />
+				<SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL">
+					<items>
+						<WebView fx:id="browser" minHeight="200.0" minWidth="200.0" prefHeight="-1.0" prefWidth="-1.0" />
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="200.0" prefViewportHeight="332.0" prefViewportWidth="237.0068359375">
+                     <content>
+      						<TextFlow maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="200.0" textAlignment="JUSTIFY">
+      							<children>
+      								<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Versión texto: ">
+      									<font>
+      										<Font name="Arial Bold" size="14.0" />
+      									</font>
+      								</Text>
+      								<Text fx:id="txtBrowser" strokeType="OUTSIDE" strokeWidth="0.0">
+      									<font>
+      										<Font name="System Italic" size="12.0" />
+      									</font>
+      								</Text>
+      							</children>
+      						</TextFlow>
+                     </content>
+                  </ScrollPane>
+					</items>
+				</SplitPane>
+			</items>
+		</SplitPane>
+	</center>
+</BorderPane>

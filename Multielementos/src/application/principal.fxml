@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrincipalController">
+   <left>
+      <Accordion BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane animated="false" text="Navegación">
+            <content>
+                  <VBox>
+                     <children>
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#calculadora" text="Calculadora" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#editor" text="Editor" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#cambiaEscena" text="Dashboard" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#alerta" text="Alerta" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#ventanaModal" text="Modal" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#ventanaModaless" text="Modeless" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#ventanaIndependiente" text="Independiente" />
+                     </children>
+                  </VBox>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="untitled 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="untitled 3">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </left>
+</BorderPane>
