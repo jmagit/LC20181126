@@ -14,8 +14,8 @@ public class Main extends Application {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("calculadora.fxml"));
 			Scene scene = new Scene(root,450,470);
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			scene.getStylesheets().add(getClass().getResource("calculadora.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("calculadora.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Calculadora");
 			primaryStage.getIcons().add(new Image("calculator.png"));
