@@ -25,6 +25,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Mi aplicación");
 			primaryStage.setScene(scene);
+			primaryStage.setMaximized(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,6 +40,7 @@ public class Main extends Application {
 			scene.getStylesheets().add(Main.class.getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Mi dashboard");
 			primaryStage.setScene(scene);
+			primaryStage.setMaximized(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +51,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		try {
-			goPrincipal();
+			goDashboard();
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

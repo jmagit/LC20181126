@@ -8,7 +8,7 @@
 
 <?scenebuilder-stylesheet calculadora.css?>
 
-<BorderPane minHeight="320.0" minWidth="230.0" prefHeight="450.0" prefWidth="375.0" styleClass="calculadora" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CalculadoraController" stylesheets="application/calculadora.css">
+<BorderPane minHeight="320.0" minWidth="230.0" prefHeight="450.0" prefWidth="375.0" styleClass="calculadora" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.calculadora.CalculadoraController" stylesheets="application/calculadora/calculadora.css">
 	<top>
       <VBox>
          <children>

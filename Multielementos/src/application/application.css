@@ -1,1 +1,60 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.root {
+	-fx-background-color: white;
+}
+
+.opciones {
+	-fx-background-image: url(fondo.png);
+	-fx-background-size: stretch;
+	-fx-text-fill: white;
+}
+
+.sinfondo {
+	-fx-background-color: transparent;
+}
+
+.titled-pane {
+	-fx-text-fill: navy;
+}
+
+.opciones .hyperlink {
+	-fx-text-fill: white;
+}
+.opciones .hyperlink:visited	 {
+	-fx-text-fill: white;
+}
+
+.dashboard {
+	-fx-background-color: linear-gradient( from 0.0% 0.0% to 50.0% 100.0%, rgb(0,0,0) 0.0, rgb(102,102,102) 90.0, rgb(255,255,255) 100.0);
+}
+.dashboard .button {
+	-fx-text-fill: white;
+    -fx-background-color: transparent; 
+    -fx-border-color: white; 
+    -fx-border-radius: 20;
+    -fx-font-size: 20; 
+}
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;   
+}
+
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-padding: 20px;
+}
+
+.chart-legend-item, .chart-title, .axis-label {
+    -fx-text-fill: white;
+}
+.axis, .axis-tick-mark {
+	-fx-tick-label-fill: white;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines, .axis-tick-mark {
+    -fx-stroke: white;
+}
+.chart-pie-label {
+    -fx-fill: white;
+}
