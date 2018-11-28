@@ -51,7 +51,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		try {
-			goDashboard();
+			goPrincipal();
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

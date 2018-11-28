@@ -21,6 +21,11 @@ import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -90,6 +95,48 @@ public class PrincipalController implements Initializable {
 		root.setCenter(lineChart);
 	}
 
+	public void verAyuda(Event ev) {
+		WebView browser = new WebView();
+		WebEngine webEngine = browser.getEngine();
+		webEngine.load("https://docs.oracle.com/javase/8/javase-clienttechnologies.htm");
+		root.setCenter(browser);
+	}
+	public void verInforme(Event ev) {
+		WebView browser = new WebView();
+		WebEngine webEngine = browser.getEngine();
+		StringBuilder sb = new StringBuilder();
+		sb.append("<html><head><style>");
+		sb.append("body { color: red; }");
+		sb.append("th { background-color: red; color: white; }");
+		sb.append("</style><head><body>");
+		sb.append("<h1>Listado</h1>");
+		sb.append("<p><b>Nota</b>Lorem ipsum dolor sit amet consectetur adipiscing elit malesuada feugiat commodo sollicitudin mus laoreet hendrerit, purus morbi montes platea vestibulum posuere cras per ad massa vel netus eu. </p>");
+		sb.append("<table border=\"1\">");
+		sb.append("<tr><th>Código</th><th>Nombre</th><th>Apellidos</th></tr>");
+		for(int i = 1; i++ < 100;) {
+		sb.append(String.format("<tr><td>%d</td><td>Nombre %d</td><td>Apellidos %d</td></tr>", i, i, i));
+		}
+		sb.append("</table></body></html>");
+		webEngine.loadContent(sb.toString());
+		root.setCenter(browser);
+	}
+	public void verVideo(Event ev) {
+		WebView browser = new WebView();
+		WebEngine webEngine = browser.getEngine();
+		webEngine.load("https://ia600208.us.archive.org/31/items/ace_200907_06/012daf06069bb4c0b8171a68d176d258.mts-mp430-272.mp4");
+		root.setCenter(browser);
+	}
+	public void reproductor(Event evento) {
+//		Media media = new Media("https://ia600208.us.archive.org/31/items/ace_200907_06/012daf06069bb4c0b8171a68d176d258.mts-mp430-272.mp4");
+//		MediaPlayer mediaPlayer = new MediaPlayer(media);
+//		mediaPlayer.setAutoPlay(true);
+//		MediaView player = new MediaView(mediaPlayer);
+//		player.setMediaPlayer(mediaPlayer);
+//		root.setCenter(player);
+		VideoPlayerController c = (VideoPlayerController)cargarFXML("video-player.fxml");
+		c.setUrlVideo("https://ia800301.us.archive.org/15/items/CuteWhiteDogsSitting-20050731/CuteWhiteDogsSitting-20050731_512kb.mp4");
+	}
+	
 	public void alerta(Event ev) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Information Dialog");
@@ -145,6 +192,6 @@ public class PrincipalController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		acordeon.setExpandedPane(acordeon.getPanes().get(0));
+		acordeon.setExpandedPane(acordeon.getPanes().get(1));
 	}
 }

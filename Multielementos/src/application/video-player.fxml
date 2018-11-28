@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VideoPlayerController">
+   <children>
+      <TextField fx:id="txtURL" prefHeight="25.0" prefWidth="226.0" text="https://www.kj.com/sites/default/files/video/530262769.mp4" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="291.0" AnchorPane.topAnchor="10.0" />
+      <HBox alignment="TOP_CENTER" prefHeight="31.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Button layoutX="208.0" layoutY="10.0" mnemonicParsing="false" onAction="#onLoad" text="Load">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/expand-left-8x.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnPlay" disable="true" mnemonicParsing="false" onAction="#onPlay" text="Play">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/media-play-8x.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnPause" disable="true" mnemonicParsing="false" onAction="#onPause" text="Pause">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/media-pause-8x.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnStop" disable="true" mnemonicParsing="false" onAction="#onStop" text="Stop">
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/media-stop-8x.png" />
+                     </image>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <ScrollPane layoutX="5.0" layoutY="40.0" prefViewportHeight="200.0" prefViewportWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+         <content>
+            <MediaView fx:id="player" fitHeight="200.0" fitWidth="200.0" layoutX="25.0" layoutY="53.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

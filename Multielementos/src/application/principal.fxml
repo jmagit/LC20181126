@@ -30,6 +30,10 @@
                      <children>
                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#pieChart" text="Pie Chart" />
                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#lineChart" text="Line Chart" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#verAyuda" text="Ayuda" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#verInforme" text="Informe" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#verVideo" text="Ver video" />
+                        <Hyperlink maxWidth="1.7976931348623157E308" onAction="#reproductor" text="Reproductor" />
                      </children>
                   </VBox>
             </content>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxWidth="200.0" prefHeight="364.0" prefWidth="441.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: white;" text="Titulo del documentos">
+         <font>
+            <Font name="Segoe UI Light" size="48.0" />
+         </font>
+      </Text>
+      <TextFlow prefWidth="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nota:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet consectetur adipiscing elit malesuada feugiat commodo sollicitudin mus laoreet hendrerit, purus morbi montes platea vestibulum posuere cras per ad massa vel netus eu. " />
+         </children>
+      </TextFlow>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phasellus orci cubilia accumsan natoque placerat nullam nam, lacus lectus cursus primis nisl senectus torquent, curabitur massa euismod mus ullamcorper risus. Egestas pellentesque integer himenaeos eleifend est molestie posuere quam per in aliquam, tellus imperdiet orci tortor conubia luctus senectus eget lectus.">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Text>
+   </children>
+</VBox>
