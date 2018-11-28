@@ -7,16 +7,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="306.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosFormController">
+<AnchorPane prefHeight="306.0" prefWidth="474.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosFormController">
    <children>
-      <Button fx:id="btnAccept" mnemonicParsing="false" text="Aceptar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="70.0" />
-      <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancelar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
-      <FlowPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+      <Label styleClass="header" text="Empleado" />
+      <FlowPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
          <children>
             <HBox>
                <children>
-                  <Label text="Código:" />
+                  <Label styleClass="item-title" text="Código:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="txtIdEmpleado" prefWidth="50.0" />
                </children>
                <FlowPane.margin>
@@ -25,7 +26,10 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0">
                <children>
-                  <Label text="Nombre:" />
+                  <Label styleClass="item-title" text="Nombre:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="txtNombre" />
                </children>
                <FlowPane.margin>
@@ -34,7 +38,10 @@
             </HBox>
             <HBox layoutX="187.0" layoutY="10.0">
                <children>
-                  <Label text="Apellidos:" />
+                  <Label styleClass="item-title" text="Apellidos:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></Label>
                   <TextField fx:id="txtApellidos" prefWidth="200.0" />
                </children>
                <FlowPane.margin>
@@ -43,7 +50,10 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="35.0">
                <children>
-                  <Label text="Delegación:" />
+                  <Label styleClass="item-title" text="Delegación:">
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin></Label>
                   <ComboBox fx:id="cbDelegacion" prefWidth="150.0" />
                </children>
                <FlowPane.margin>
@@ -57,6 +67,7 @@
             </CheckBox>
          </children>
       </FlowPane>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Empleado" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button fx:id="btnAccept" layoutX="266.0" layoutY="268.0" mnemonicParsing="false" text="Aceptar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="115.0" />
+      <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancelar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    </children>
 </AnchorPane>

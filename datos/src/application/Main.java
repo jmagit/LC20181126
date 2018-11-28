@@ -14,7 +14,7 @@ public class Main extends Application {
 		try {
 			Parent root = (Parent)FXMLLoader.load(getClass().getResource("empleados-mnt-view.fxml"));
 			Scene scene = new Scene(root,800,600);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("datos.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Datos");
 			primaryStage.show();

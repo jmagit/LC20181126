@@ -6,13 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane prefHeight="274.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosListController">
+<BorderPane prefHeight="274.0" prefWidth="432.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosListController">
    <top>
-      <Label text="Mantenimiento de Empleados" BorderPane.alignment="CENTER" />
+      <Label styleClass="header" text="Mantenimiento de Empleados" BorderPane.alignment="CENTER" />
    </top>
    <center>
-      <ListView fx:id="lbListado" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ListView fx:id="lbListado" prefHeight="200.0" prefWidth="200.0" styleClass="list-spinner" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </BorderPane.margin>
@@ -22,6 +21,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnAdd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Añadir" />
+            <Button fx:id="btnView" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ver" />
             <Button fx:id="btnModify" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Editar" />
             <Button fx:id="btnRemove" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Borrar" />
          </children>

@@ -22,6 +22,8 @@ public class EmpleadosListController implements Initializable {
 	@FXML
 	protected ButtonBase btnModify;
 	@FXML
+	protected ButtonBase btnView;
+	@FXML
 	protected ButtonBase btnRemove;
 	@FXML
 	protected ListView<EmpleadoModel> lbListado;
@@ -43,11 +45,13 @@ public class EmpleadosListController implements Initializable {
 		return elemento.get();
 	}
 	public void setCommand(EventHandler<ActionEvent> add, EventHandler<ActionEvent> modify,
-			EventHandler<ActionEvent> remove) {
+			EventHandler<ActionEvent> view, EventHandler<ActionEvent> remove) {
 		if (btnAdd != null)
 			btnAdd.setOnAction(add);
 		if (btnModify != null)
 			btnModify.setOnAction(modify);
+		if (btnView != null)
+			btnView.setOnAction(view);
 		if (btnRemove != null)
 			btnRemove.setOnAction(remove);
 	}

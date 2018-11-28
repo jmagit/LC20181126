@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="420.0" prefWidth="619.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosViewController" styleClass="view">
+   <children>
+      <Button fx:id="btnCancel" layoutX="286.0" layoutY="237.0" mnemonicParsing="false" text="Volver" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="16.0" />
+      <ImageView fx:id="foto" fitHeight="296.0" fitWidth="215.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fill="#0290f5" layoutX="234.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ficha Empleado" styleClass="view-header">
+         <effect>
+            <DropShadow />
+         </effect></Text>
+      <TextFlow layoutX="234.0" layoutY="81.0" prefWidth="380.0" >
+         <children>
+            <Text fx:id="txtNombre" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" styleClass="view-title"/>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" " styleClass="view-title"/>
+            <Text fx:id="txtApellidos" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" styleClass="view-title"/>
+         </children>
+      </TextFlow>
+      <Text fx:id="cbDelegacion" layoutX="234.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delegacion" styleClass="view-sub-title" />
+      <Text fx:id="ckConflictivo" fill="RED" layoutX="234.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Persona Conflictiva" styleClass="view-sub-error" />
+   </children>
+</AnchorPane>

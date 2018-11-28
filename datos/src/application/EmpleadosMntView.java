@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import application.dal.Empleado;
@@ -15,16 +16,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.StackPane;
 
 public class EmpleadosMntView implements Initializable {
 	@FXML
 	protected StackPane root;
 
-	protected Parent listPane = null, formPane = null;
+	protected Parent listPane = null, formPane = null, viewPane = null;
 	protected EmpleadosListController listController;
 	protected EmpleadosFormController formController;
+	protected EmpleadosViewController viewController;
 	protected EventHandler<ActionEvent> addHandler;
+	protected EventHandler<ActionEvent> viewHandler;
 	protected EventHandler<ActionEvent> modifyHandler;
 	protected EventHandler<ActionEvent> removeHandler;
 	protected EventHandler<ActionEvent> acceptAddHandler;
@@ -50,7 +56,16 @@ public class EmpleadosMntView implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		root.getChildren().addAll(listPane, formPane);
+		loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("EmpleadosView.fxml"));
+		try {
+			viewPane = (Parent) loader.load();
+			viewController = (EmpleadosViewController) loader.getController();
+			viewPane.setVisible(false);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		root.getChildren().addAll(listPane, formPane, viewPane);
 
 		acceptAddHandler = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -82,6 +97,7 @@ public class EmpleadosMntView implements Initializable {
 			public void handle(ActionEvent event) {
 				listPane.setVisible(true);
 				formPane.setVisible(false);
+				viewPane.setVisible(false);
 			}
 		};
 
@@ -107,19 +123,41 @@ public class EmpleadosMntView implements Initializable {
 				}
 			}
 		};
+		viewHandler = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				try {
+					if (listController.getElemento() == null)
+						return;
+					viewController.setModel(load(listController.getElemento().getIdEmpleado()));
+					viewController.setCommand(null, cancelHandler);
+					listPane.setVisible(false);
+					viewPane.setVisible(true);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
 		removeHandler = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
 				if (listController.getElemento() != null)
 					try {
-						remove(listController.getElemento().getIdEmpleado());
-						load();
+						Alert alert = new Alert(AlertType.CONFIRMATION);
+						alert.setTitle("Pedir confirmacion");
+						alert.setHeaderText(null);
+						alert.setContentText("¿Seguro?");
+
+						Optional<ButtonType> result = alert.showAndWait();
+						if (result.get() == ButtonType.OK) {
+							remove(listController.getElemento().getIdEmpleado());
+							load();
+						}
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 			}
 		};
 
-		listController.setCommand(addHandler, modifyHandler, removeHandler);
+		listController.setCommand(addHandler, modifyHandler, viewHandler, removeHandler);
 		load();
 	}
 
