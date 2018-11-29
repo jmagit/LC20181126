@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import application.model.EmpleadoModel;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.util.Callback;
 
 public class EmpleadosListController implements Initializable {
@@ -40,6 +46,8 @@ public class EmpleadosListController implements Initializable {
 		this.listado = listado;
 		if (lbListado != null)
 			lbListado.setItems(this.listado);
+		if (dataGrid != null)
+			dataGrid.setItems(this.listado);
 	}
 	public EmpleadoModel getElemento() {
 		return elemento.get();
@@ -77,7 +85,100 @@ public class EmpleadosListController implements Initializable {
 			});
 			elemento.bind(lbListado.getSelectionModel().selectedItemProperty());
 		}
+		if (dataGrid != null) {
+	        Callback<TableColumn<EmpleadoModel, String>, TableCell<EmpleadoModel, String>> cellFactory = 
+	        		(TableColumn<EmpleadoModel, String> p) -> new EditingCell<EmpleadoModel>();
+			TableColumn<EmpleadoModel, String> col = (TableColumn<EmpleadoModel, String>)dataGrid.getColumns().get(0);
+		    //col.setCellFactory(TextFieldTableCell.<EmpleadoModel>forTableColumn());
+		    col.setCellFactory(cellFactory);
+		    col.setOnEditCommit(
+		            (CellEditEvent<EmpleadoModel, String> t) -> {
+		                ((EmpleadoModel) t.getTableView().getItems().get(
+		                        t.getTablePosition().getRow())
+		                        ).IdEmpleadoProperty().set(t.getNewValue());
+		        });
+			col = (TableColumn<EmpleadoModel, String>)dataGrid.getColumns().get(1);
+		    //col.setCellFactory(TextFieldTableCell.<EmpleadoModel>forTableColumn());
+		    col.setCellFactory(cellFactory);
+		    col.setOnEditCommit(
+		            (CellEditEvent<EmpleadoModel, String> t) -> {
+		                ((EmpleadoModel) t.getTableView().getItems().get(
+		                        t.getTablePosition().getRow())
+		                        ).setNombre(t.getNewValue());
+		        });
+			col = (TableColumn<EmpleadoModel, String>)dataGrid.getColumns().get(2);
+		    //col.setCellFactory(TextFieldTableCell.<EmpleadoModel>forTableColumn());
+		    col.setCellFactory(cellFactory);
+		    col.setOnEditCommit(
+		            (CellEditEvent<EmpleadoModel, String> t) -> {
+		                ((EmpleadoModel) t.getTableView().getItems().get(
+		                        t.getTablePosition().getRow())
+		                        ).setApellidos(t.getNewValue());
+		        });
+			elemento.bind(dataGrid.getSelectionModel().selectedItemProperty());
+		}
 	}
 
+    class EditingCell<T> extends TableCell<T, String> {
+        private TextField textField;
+ 
+        public EditingCell() {
+        }
+ 
+        @Override
+        public void startEdit() {
+            if (!isEmpty()) {
+                super.startEdit();
+                createTextField();
+                setText(null);
+                setGraphic(textField);
+                textField.selectAll();
+            }
+        }
+ 
+        @Override
+        public void cancelEdit() {
+            super.cancelEdit();
+ 
+            setText((String) getItem());
+            setGraphic(null);
+        }
+ 
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+ 
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                if (isEditing()) {
+                    if (textField != null) {
+                        textField.setText(getString());
+                    }
+                    setText(null);
+                    setGraphic(textField);
+                } else {
+                    setText(getString());
+                    setGraphic(null);
+                }
+            }
+        }
+ 
+        private void createTextField() {
+            textField = new TextField(getString());
+            textField.setMinWidth(this.getWidth() - this.getGraphicTextGap()* 2);
+            textField.focusedProperty().addListener(
+                (ObservableValue<? extends Boolean> arg0, Boolean arg1, Boolean arg2) -> {
+                    if (!arg2) {
+                        commitEdit(textField.getText());
+                    }
+            });
+        }
+ 
+        private String getString() {
+            return getItem() == null ? "" : getItem().toString();
+        }
+    }
 
 }

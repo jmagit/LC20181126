@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<BorderPane prefHeight="274.0" prefWidth="432.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EmpleadosListController">
+   <top>
+      <Label styleClass="header" text="Mantenimiento de Empleados" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+		<TableView fx:id="dataGrid" editable="true">
+			<columns>
+				<TableColumn minWidth="50.0" text="Código">
+					<cellValueFactory>
+						<PropertyValueFactory property="IdEmpleado" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="1.7976931348623157E308" prefWidth="150.0" text="Nombre">
+					<cellValueFactory>
+						<PropertyValueFactory property="Nombre" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="1.7976931348623157E308" prefWidth="200.0" text="Apellidos">
+					<cellValueFactory>
+						<PropertyValueFactory property="Apellidos" />
+					</cellValueFactory>
+				</TableColumn>
+			</columns>
+		</TableView>
+   </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnAdd" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Añadir" />
+            <Button fx:id="btnView" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Ver" />
+            <Button fx:id="btnModify" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Editar" />
+            <Button fx:id="btnRemove" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Borrar" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>

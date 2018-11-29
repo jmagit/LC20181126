@@ -7,28 +7,49 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
-<GridPane styleClass="dashboard" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
+<GridPane styleClass="dashboard"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.DashboardController">
 	<columnConstraints>
-		<ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
-		<ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
-		<ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
-		<ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
-		<ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0" />
+		<ColumnConstraints hgrow="SOMETIMES"
+			percentWidth="20.0" />
+		<ColumnConstraints hgrow="SOMETIMES"
+			percentWidth="20.0" />
+		<ColumnConstraints hgrow="SOMETIMES"
+			percentWidth="20.0" />
+		<ColumnConstraints hgrow="SOMETIMES"
+			percentWidth="20.0" />
+		<ColumnConstraints hgrow="SOMETIMES"
+			percentWidth="20.0" />
 	</columnConstraints>
 	<rowConstraints>
 		<RowConstraints vgrow="SOMETIMES" />
 		<RowConstraints vgrow="SOMETIMES" />
 	</rowConstraints>
 	<children>
-		<PieChart fx:id="pieChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-		<TableView fx:id="tabla" maxHeight="200" maxWidth="300.0" GridPane.columnIndex="1">
+		<PieChart fx:id="pieChart" maxHeight="1.7976931348623157E308"
+			maxWidth="1.7976931348623157E308" />
+		<TableView fx:id="tabla" maxHeight="200" maxWidth="300.0"
+			GridPane.columnIndex="1">
 			<columns>
-				<TableColumn prefWidth="100.0" text="Categoría" />
-				<TableColumn maxWidth="1.7976931348623157E308" prefWidth="160.0" text="Cantidad" />
+				<TableColumn prefWidth="100.0" text="Categoría">
+					<cellValueFactory>
+						<PropertyValueFactory property="name" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn maxWidth="1.7976931348623157E308"
+					prefWidth="160.0" text="Cantidad" >
+					<cellValueFactory>
+						<PropertyValueFactory property="pieValue" />
+					</cellValueFactory>
+				</TableColumn>
 			</columns>
 		</TableView>
-		<LineChart fx:id="lineChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.columnSpan="2">
+		<LineChart fx:id="lineChart"
+			maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+			GridPane.columnIndex="2" GridPane.columnSpan="2">
 			<xAxis>
 				<CategoryAxis side="BOTTOM" />
 			</xAxis>
@@ -36,7 +57,8 @@
 				<NumberAxis side="LEFT" />
 			</yAxis>
 		</LineChart>
-		<BarChart fx:id="barChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="4">
+		<BarChart fx:id="barChart" maxHeight="1.7976931348623157E308"
+			maxWidth="1.7976931348623157E308" GridPane.columnIndex="4">
 			<xAxis>
 				<NumberAxis side="BOTTOM" />
 			</xAxis>
@@ -44,7 +66,9 @@
 				<CategoryAxis side="LEFT" />
 			</yAxis>
 		</BarChart>
-		<ScatterChart fx:id="scatterChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.rowIndex="1">
+		<ScatterChart fx:id="scatterChart"
+			maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+			GridPane.columnSpan="2" GridPane.rowIndex="1">
 			<xAxis>
 				<NumberAxis side="BOTTOM" />
 			</xAxis>
@@ -52,7 +76,9 @@
 				<NumberAxis side="LEFT" />
 			</yAxis>
 		</ScatterChart>
-		<StackedBarChart fx:id="stackedBarChart" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1">
+		<StackedBarChart fx:id="stackedBarChart"
+			maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+			GridPane.columnIndex="2" GridPane.rowIndex="1">
 			<xAxis>
 				<CategoryAxis side="BOTTOM" />
 			</xAxis>
@@ -60,13 +86,17 @@
 				<NumberAxis side="LEFT" />
 			</yAxis>
 			<GridPane.margin>
-            <Insets bottom="15.0" right="5.0" />
-         </GridPane.margin>
+				<Insets bottom="15.0" right="5.0" />
+			</GridPane.margin>
 		</StackedBarChart>
-		<Button mnemonicParsing="false" onAction="#cambiaEscena" text="Volver" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-         <GridPane.margin>
-            <Insets bottom="5.0" right="5.0" />
-         </GridPane.margin></Button>
-      <MediaView fx:id="player" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+		<Button mnemonicParsing="false" onAction="#cambiaEscena"
+			text="Volver" GridPane.columnIndex="4" GridPane.halignment="RIGHT"
+			GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+			<GridPane.margin>
+				<Insets bottom="5.0" right="5.0" />
+			</GridPane.margin>
+		</Button>
+		<MediaView fx:id="player" GridPane.columnIndex="3"
+			GridPane.columnSpan="2" GridPane.rowIndex="1" />
 	</children>
 </GridPane>

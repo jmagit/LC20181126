@@ -40,7 +40,8 @@ public class EmpleadosMntView implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("EmpleadosList.fxml"));
+//		loader.setLocation(getClass().getResource("EmpleadosList.fxml"));
+		loader.setLocation(getClass().getResource("EmpleadosTable.fxml"));
 		try {
 			listPane = (Parent) loader.load();
 			listController = (EmpleadosListController) loader.getController();

@@ -87,9 +87,9 @@ public class DashboardController implements Initializable {
 	}
 
 	public void bindTable() {
-		((TableColumn) tabla.getColumns().get(0)).setCellValueFactory(new PropertyValueFactory<>("name"));
-		((TableColumn<PieChart.Data, Double>) tabla.getColumns().get(1))
-				.setCellValueFactory(new PropertyValueFactory<PieChart.Data, Double>("pieValue"));
+//		((TableColumn) tabla.getColumns().get(0)).setCellValueFactory(new PropertyValueFactory<>("name"));
+//		((TableColumn<PieChart.Data, Double>) tabla.getColumns().get(1))
+//				.setCellValueFactory(new PropertyValueFactory<PieChart.Data, Double>("pieValue"));
 		tabla.setItems(pieChartData);
 	}
 
