@@ -38,10 +38,14 @@
                   </VBox>
             </content>
           </TitledPane>
-          <TitledPane animated="false" text="Varios">
+          <TitledPane animated="false" text="Otros">
              <content>
                   <VBox styleClass="opciones">
                      <children>
+                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#empleados" text="Empleados" />
+                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#lento" text="Lento" />
+                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#rapido" text="Rapido" />
+                         <Hyperlink maxWidth="1.7976931348623157E308" onAction="#onHilo" text="Hilo" />
                      </children>
                   </VBox>
             </content>

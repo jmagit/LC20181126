@@ -1,12 +1,12 @@
-package application;
-
+package application.empleados;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.dal.Empleado;
-import application.dal.IEntity;
 import application.model.EmpleadoModel;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,7 +19,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class EmpleadosViewController extends BaseFormController<EmpleadoModel, Empleado> {
+public class EmpleadosViewController implements Initializable {
+	@FXML
+	protected Button btnAccept;
+	@FXML
+	protected Button btnCancel;
+	@FXML
 	protected Text txtIdEmpleado;
 	@FXML
 	protected Text txtNombre;
@@ -31,24 +36,48 @@ public class EmpleadosViewController extends BaseFormController<EmpleadoModel, E
 	protected Text ckConflictivo;
 	@FXML
 	protected ImageView foto;
-	
-	public EmpleadosViewController() {
-		super(new EmpleadoModel());
+
+	private EmpleadoModel model = new EmpleadoModel();
+
+	public EmpleadoModel getModel() {
+		return model;
 	}
-	
-	@Override
-	public void setEntity(Empleado item) {
+
+	public void setModel(EmpleadoModel model) {
+		this.model.copyModel(model);
+	}
+
+	public void setModel(Empleado item) {
+//		Task<Void> task = new Task<Void>() {
+//			@Override
+//			protected Void call() throws Exception {
+//				Image img = new Image("http://placeimg.com/480/640/people");
+//				Platform.runLater(new Runnable() {
+//					@Override
+//					public void run() {
+//						foto.setImage(img);
+//					}
+//				});
+//				return null;
+//			}
+//		};
+//		(new Thread(task)).start();
 		foto.setImage(new Image("http://placeimg.com/480/640/people"));
-		super.setEntity(item);
+		this.model.copyEntity(item);
 	}
+
+	public void setCommand(EventHandler<ActionEvent> accept, EventHandler<ActionEvent> cancel) {
+		if (btnCancel != null)
+			btnCancel.setOnAction(cancel);
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//txtIdEmpleado.textProperty().bindBidirectional(model.IdEmpleadoProperty());
+		// txtIdEmpleado.textProperty().bindBidirectional(model.IdEmpleadoProperty());
 		txtNombre.textProperty().bindBidirectional(model.NombreProperty());
 		txtApellidos.textProperty().bindBidirectional(model.ApellidosProperty());
 		cbDelegacion.textProperty().bindBidirectional(model.DelegacionProperty());
 		ckConflictivo.visibleProperty().bind(model.ConflictivoProperty());
 	}
-
 
 }

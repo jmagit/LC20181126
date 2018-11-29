@@ -90,7 +90,6 @@ public class EmpleadoModel implements ModelCopiable<EmpleadoModel, Empleado> {
 		setConflictivo(item.isConflictivo());
 		return this;
 	}
-	@Override
 	public Empleado getEntity() {
 		Empleado rslt = new Empleado();
 		rslt.setIdEmpleado(getIdEmpleado());
@@ -99,11 +98,6 @@ public class EmpleadoModel implements ModelCopiable<EmpleadoModel, Empleado> {
 		rslt.setDelegacion(getDelegacion());
 		rslt.setConflictivo(isConflictivo());
 		return rslt;
-	}
-
-	@Override
-	public int getPrimaryKey() {
-		return getIdEmpleado();
 	}
 	
 	ObservableList<String> delegaciones = FXCollections.observableArrayList(

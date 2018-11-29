@@ -2,7 +2,7 @@ package application.dal;
 
 import java.io.Serializable;
 
-public class Empleado implements Serializable, IEntity {
+public class Empleado implements Serializable {
 	/**
 	 * 
 	 */
@@ -53,26 +53,15 @@ public class Empleado implements Serializable, IEntity {
 		this.conflictivo = conflictivo;
 	}
 	
-	/* (non-Javadoc)
-	 * @see application.dal.IEntity#isValid()
-	 */
-	@Override
 	public boolean isValid() {
 		return true;
 	}
-	/* (non-Javadoc)
-	 * @see application.dal.IEntity#isInvalid()
-	 */
-	@Override
 	public boolean isInvalid() {
 		return !isValid();
 	}
-	/* (non-Javadoc)
-	 * @see application.dal.IEntity#errors()
-	 */
-	@Override
 	public String[] errors() {
 		return null;
 	}
+	
 
 }

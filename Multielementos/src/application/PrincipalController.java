@@ -1,16 +1,27 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.editor.EditorController;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -20,10 +31,14 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
@@ -49,6 +64,10 @@ public class PrincipalController implements Initializable {
 
 	public void calculadora(Event ev) {
 		cargarFXML("calculadora/calculadora.fxml");
+	}
+
+	public void empleados(Event ev) {
+		cargarFXML("empleados/empleados-mnt-view.fxml");
 	}
 
 	public void editor(Event ev) {
@@ -190,8 +209,98 @@ public class PrincipalController implements Initializable {
 		dialogStage.show();
 	}
 
+	public class FirstLineService extends Service<String> {
+		private int delay = 0;
+
+		public FirstLineService(String url, int delay) {
+			super();
+			this.delay = delay;
+			this.setUrl(url);
+		}
+
+		private StringProperty url = new SimpleStringProperty();
+
+		public final void setUrl(String value) {
+			url.set(value);
+		}
+
+		public final String getUrl() {
+			return url.get();
+		}
+
+		public final StringProperty urlProperty() {
+			return url;
+		}
+
+		protected Task<String> createTask() {
+			return new Task<String>() {
+				@Override
+				protected String call() throws IOException, MalformedURLException, InterruptedException {
+					updateMessage("inicio: " + getUrl());
+					BufferedReader in = new BufferedReader(new InputStreamReader(new URL(getUrl()).openStream()));
+					Platform.runLater(() -> setUrl("*" + getUrl()));
+					Thread.sleep(delay);
+					updateMessage("llega: " + getUrl());
+					Platform.runLater(() -> setUrl("*" + getUrl()));
+					return in.readLine();
+				}
+			};
+		}
+	}
+
+	public void startService(String URL, int delay) throws Exception {
+		FirstLineService service = new FirstLineService(URL, delay);
+		service.setUrl(URL);
+		service.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+			@Override
+			public void handle(WorkerStateEvent t) {
+				root.setCenter(new TextFlow(new Text(t.getSource().getValue().toString())));
+			}
+		});
+		service.start();
+	}
+
+	public void lento(Event ev) throws Exception {
+		startService("https://google.es", 2000);
+	}
+
+	public void rapido(Event ev) throws Exception {
+		startService("https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/text-settings.htm#CHDEEAFG", 0);
+	}
+
+
+	public void onHilo(Event e) throws Exception {
+		final Group group = new Group();
+		ProgressBar bar = new ProgressBar(0);
+		group.getChildren().add(bar);
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				for (int i = 0; i < 100; i++) {
+					if (isCancelled())
+						break;
+					final Rectangle r = new Rectangle(10, 10);
+					r.setX(50 + 10 * i);
+					r.setY(50 + 5 * i);
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							group.getChildren().add(r);
+						}
+					});
+					updateProgress(i, 100);
+					Thread.sleep(20);
+				}
+				return null;
+			}
+		};
+		bar.progressProperty().bind(task.progressProperty());
+		root.setCenter(group);
+		(new Thread(task)).start();
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		acordeon.setExpandedPane(acordeon.getPanes().get(1));
+		acordeon.setExpandedPane(acordeon.getPanes().get(2));
 	}
 }
