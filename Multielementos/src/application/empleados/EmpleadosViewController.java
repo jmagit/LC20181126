@@ -48,21 +48,21 @@ public class EmpleadosViewController implements Initializable {
 	}
 
 	public void setModel(Empleado item) {
-//		Task<Void> task = new Task<Void>() {
-//			@Override
-//			protected Void call() throws Exception {
-//				Image img = new Image("http://placeimg.com/480/640/people");
-//				Platform.runLater(new Runnable() {
-//					@Override
-//					public void run() {
-//						foto.setImage(img);
-//					}
-//				});
-//				return null;
-//			}
-//		};
-//		(new Thread(task)).start();
-		foto.setImage(new Image("http://placeimg.com/480/640/people"));
+		Task<Void> task = new Task<Void>() {
+			@Override
+			protected Void call() throws Exception {
+				Image img = new Image("http://placeimg.com/480/640/people");
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						foto.setImage(img);
+					}
+				});
+				return null;
+			}
+		};
+		(new Thread(task)).start();
+		//foto.setImage(new Image("http://placeimg.com/480/640/people"));
 		this.model.copyEntity(item);
 	}
 

@@ -46,6 +46,7 @@
                          <Hyperlink maxWidth="1.7976931348623157E308" onAction="#lento" text="Lento" />
                          <Hyperlink maxWidth="1.7976931348623157E308" onAction="#rapido" text="Rapido" />
                          <Hyperlink maxWidth="1.7976931348623157E308" onAction="#onHilo" text="Hilo" />
+                        <ProgressBar fx:id="bar" prefWidth="200.0" progress="0.0" />
                      </children>
                   </VBox>
             </content>
@@ -53,4 +54,7 @@
         </panes>
       </Accordion>
    </left>
+   <bottom>
+      <Label fx:id="lblURL" text="Label" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

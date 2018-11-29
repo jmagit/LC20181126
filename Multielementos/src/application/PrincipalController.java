@@ -31,6 +31,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
@@ -48,8 +49,12 @@ public class PrincipalController implements Initializable {
 	@FXML
 	private BorderPane root;
 	@FXML
-	Accordion acordeon;
-
+	private Accordion acordeon;
+	@FXML
+	private ProgressBar bar;
+	@FXML
+	private Label lblURL;
+	
 	private Object cargarFXML(String plantilla) {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource(plantilla));
@@ -257,6 +262,7 @@ public class PrincipalController implements Initializable {
 				root.setCenter(new TextFlow(new Text(t.getSource().getValue().toString())));
 			}
 		});
+		lblURL.textProperty().bind(service.urlProperty());
 		service.start();
 	}
 
@@ -271,8 +277,8 @@ public class PrincipalController implements Initializable {
 
 	public void onHilo(Event e) throws Exception {
 		final Group group = new Group();
-		ProgressBar bar = new ProgressBar(0);
-		group.getChildren().add(bar);
+//		ProgressBar bar = new ProgressBar(0);
+//		group.getChildren().add(bar);
 		Task<Void> task = new Task<Void>() {
 			@Override
 			protected Void call() throws Exception {
@@ -285,6 +291,7 @@ public class PrincipalController implements Initializable {
 					Platform.runLater(new Runnable() {
 						@Override
 						public void run() {
+					lblURL.setText("Index");
 							group.getChildren().add(r);
 						}
 					});
